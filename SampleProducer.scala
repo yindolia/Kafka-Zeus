@@ -18,10 +18,10 @@ case class KafkaProducer(
   
   val props = new Properties()
  
-  
+  //Properties from Java
   
   props.put("producer.type", if (synchronously) "sync" else "async")
-  props.put("metadata.broker.list", brokerList)
+  props.put("broker.list", brokerList)
   props.put("batch.num.messages", batchSize.toString)
   props.put("message.send.max.retries", messageSendMaxRetries.toString)
   props.put("request.require.acks", requestRequireAcks.toString)
@@ -29,6 +29,7 @@ case class KafkaProducer(
 
 
   val config = new ProducerConfig (props)
+  //ProducerConfig: part of Kafka Producer
   val producer = new Producer[AnyRef, AnyRef](config)
 
 
