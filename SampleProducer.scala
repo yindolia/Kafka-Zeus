@@ -45,7 +45,7 @@ case class KafkaProducer(
 
 
   }
-  def sendMessage(message: String, partition: String = null): Unit = {
+  def sendMessage(message: String, partition: String ): Unit = {
     try {
       producer.send(kafkaMessage(message, partition))
     }
