@@ -1,9 +1,11 @@
 package Kafka.producer
 
 import java.util.{Properties, UUID}
+import java.io._
 import kafka.common._
 import kafka.message._
 import kafka.producer.Producer
+import kafka.serializer._
 
 case class KafkaProducer(
 
@@ -35,7 +37,7 @@ case class KafkaProducer(
 
 
   def kafkaMessage(message: Array[Byte], partition: Array[Byte]): KeyedMessage[AnyRef, AnyRef] = {
-// KeyedMessage:  Part of kafka Core
+// KeyedMessage:  Part of kafka core
     if (partition== null) {
       new KeyedMessage(topic, message)
     }
