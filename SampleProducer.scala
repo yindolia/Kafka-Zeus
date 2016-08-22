@@ -28,12 +28,13 @@ case class KafkaProducer(
   props.put("message.send.max.retries", messageSendMaxRetries.toString)
   props.put("request.require.acks", requestRequireAcks.toString)
   props.put("client.id", clientId.toString)
+  
 
 
   val config = new ProducerConfig (props)
   //ProducerConfig: part of Kafka Producer
   val producer = new Producer[AnyRef, AnyRef](config)
-
+  // Producer needs Key: Anyref, Value :AnyRef and config
 
 
   def kafkaMessage(message: Array[Byte], partition: Array[Byte]): KeyedMessage[AnyRef, AnyRef] = {
