@@ -39,7 +39,9 @@ object MapFunctionEx {
 		val uppercasedWithMap: Kstream[Array[Byte], String]= textLines.map((key,value)=> (key, value.toUpperCase))
 		
 
-
+		val stream: KafkaStreams= new KafkaStreams (builder, streamingConfig)
+		
+		stream.start()
 	}
 
 
